@@ -81,7 +81,9 @@ fn spawn_app() -> String {
         .local_addr()
         .expect("could not fetch local port")
         .port();
+
     let server = zero2prod::startup::run(listener).expect("Failed to bind address");
+
     let _ = tokio::spawn(server);
 
     format!("http://127.0.0.1:{}", port)
